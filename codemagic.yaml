@@ -1,0 +1,13 @@
+workflows:
+  windows-release-workflow:
+    name: Build Windows Application
+    instance_type: windows_x2
+    environment:
+      flutter: stable
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build Windows release
+        script: flutter build windows --release -t lib/main.dart
+    artifacts:
+      - build/windows/x64/runner/release/**
